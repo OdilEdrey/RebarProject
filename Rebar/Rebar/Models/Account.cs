@@ -1,18 +1,14 @@
-﻿namespace Rebar.Models
+﻿using MongoDB.Bson.Serialization.Attributes;
+
+namespace Rebar.Models
 {
     public class Account
     {
-        public List<Order> Orders { get; set; }
-        public decimal TotalOrderAmount { get; set; }
-
-        public Account()
-        {
-            Orders = new List<Order>();
-        }
-
-        public void CreateOrder(Order order)
-        {
-            Orders.Add(order);
-        }
+        [BsonId]
+        public string Name { get; set; }
+        [BsonElement("Orders")]
+        public List<Order> Orders { get; set; } = new List<Order>();
+        [BsonElement("TotalOrderAmount")]
+        public int TotalOrderAmount { get; set; } = 0;
     }
 }

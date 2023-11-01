@@ -4,7 +4,9 @@ namespace Rebar.Services
 {
     public interface IShakeService
     {
-        ResponseModel AddShake(Shake shake);
+        public List<Shake> GetAllShakes();
+        public OrderedShakes GetShake(string name, string id, string size);
+        public void AddShake(string name, string description, double priceLarge, double priceMedium, double priceSmall);
 
 
     }

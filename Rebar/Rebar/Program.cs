@@ -1,5 +1,6 @@
 
 using Rebar.Models;
+using Rebar.Services;
 
 namespace Rebar
 {
@@ -16,6 +17,10 @@ namespace Rebar
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.Configure<RebarMongoDB>(builder.Configuration.GetSection("RebarMongoDB"));
+            builder.Services.AddScoped<IShakeService, ShakeService>();
+            builder.Services.AddScoped<IOrderService, OrderService>();
+
 
             var app = builder.Build();
 
